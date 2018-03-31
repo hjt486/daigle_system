@@ -1,65 +1,53 @@
-<% obj.each do |activity| %>
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-        <div class="well well-lg">
-            <div class="activity-title">
-                Pen # <%= link_to activity.pen_id, activity_path(activity) %>
-            </div>
-            <div class="activity-body">
-              <div>
-                Total #: <%= activity.total_num %> |
-                Pull(s) #: <%= activity.pull_num %> |
-                Dead(s) #: <%= activity.dead_num %>
-              </div>
-              <div>
-                Feed? <% if activity.feed_check == true %>
-                  CHECKED |
-                  <% else %>
-                  unchecked |
-                  <% end %>
-                Water? <% if activity.water_check == true %>
-                  CHECKED |
-                  <% else %>
-                  unchecked |
-                  <% end %>
-                Mud? <% if activity.mud_check == true %>
-                  CHECKED |
-                  <% else %>
-                  unchecked |
-                  <% end %>
-                Need Maintenance? <% if activity.maintenance_check == true %>
-                  YES
-                  <% else %>
-                  no
-                  <% end %>
-              </div>
-
-                <div class="activity-meta-details">
-                  <small> Animal Technician: <%= activity.user.username if activity.user%>,
-                                   Check-in time: <%= time_ago_in_words(activity.check_in) %> ago,
-                                   Check-out time:  <%= time_ago_in_words(activity.check_out) %> ago
-                  </small>
-                </div>
-            </div>
-            <% if logged_in? && (current_user == activity.user || current_user.admin?) %>
-             <div class="activity-actions">
-
-                <% if logged_in? && current_user == activity.user %>
-                  <%= link_to "Edit this activity", edit_activity_path(activity),
-                  class:"btn btn-xs btn-primary"%>
-                <% end %>
-                <% if logged_in? && current_user.admin? %>
-                <%= link_to "Delete these activities", activities_path(activity),
-                  method: :delete, data: {confirm: "Are you sure you want to delete this activity?"},
-                  class:"btn btn-xs btn-danger" %>
-                <% end %>
-
-             </div>
-            <% end %>
-        </div>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class = "activity-body">
+         <table>
+          <thead>
+           <tr>
+           <th>Pen </th>
+           <th>User </th>
+           <th>Total </th>
+           <th>Pull </th>
+           <th>Dead </th>
+           <th>Feed </th>
+           <th>Water </th>
+           <th>Mud </th>
+           <th>Maintenance </th>
+           <th>Check-in </th>
+           <th>Check-out </th>
+           <th>Modify </th>
+          </tr>
+          </thead>
+          <% obj.each do |activity| %>
+            <tr>
+             <td><%= activity.pen_id %></td>
+             <td><small>Animal Technician: <%= activity.user.username if activity.user%></small></td>
+             <td><%= activity.total_num %></td>
+             <td><%= activity.pull_num %></td>
+             <td><%= activity.dead_num %></td>
+             <td><% if activity.feed_check %>&#10003<% else %>&#10006<% end %></td>
+             <td><% if activity.water_check %>&#10003<% else %>&#10006<% end %></td>
+             <td><% if activity.mud_check %>&#10003<% else %>&#10006<% end %></td>
+             <td><% if activity.maintenance_check %>&#10003<% else %>&#10006<% end %></td>
+             <td><small><%= activity.check_in.httpdate  %></small></td>
+             <td><small><%= activity.check_out.httpdate %></small></td>
+             <td><% if logged_in? && (current_user == activity.user || current_user.admin?) %>
+                          <% if logged_in? && current_user == activity.user %>
+                <%= link_to "Edit", edit_activity_path(activity),
+                class:"btn btn-xs btn-primary"%>
+              <% end %>
+              <% if logged_in? && current_user.admin? %>
+              <%= link_to "Delete", activities_path(activity),
+                method: :delete, data: {confirm: "Are you sure you want to delete this activity?"},
+                class:"btn btn-xs btn-danger" %>
+              <% end %>
+             </td>
+             <% end %>
+            </tr>
+          </div>
+        <% end %>
+      </table>
+      </div>
     </div>
-</div>
- <% end %>
-
-
-<%= link_to "Back to home", root_path%>
+  </div>

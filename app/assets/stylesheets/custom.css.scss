@@ -42,16 +42,12 @@ $navbar-default-bg: black;
 
 .activity-meta-details {
     border-top: 1px solid #eaeaea;
-    margin-top: 15px; 
+    margin-top: 15px;
 }
 
 .activity-actions {
     border-top: 1px solid #eaeaea;
     padding-top: 5px;
-}
-
-.description{
-    margin-top: 0;
 }
 
 .activity-title {
@@ -60,15 +56,29 @@ $navbar-default-bg: black;
 }
 
 .activity-body {
-    border-top: 1px solid #eaeaea;
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+.activity-body th, td {
+    border: 1px solid black;
+    text-align: center
+}
+
+.user-body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.user-body td {
+    border: none;
+    text-align: center;
 }
 
 .listing {
     list-style: none;
     padding-left: 0;
-    
+
 }
 
 
@@ -95,5 +105,5 @@ footer ul {
 footer ul li {
     float: left;
     margin-left: 15px;
-    
+
 }
