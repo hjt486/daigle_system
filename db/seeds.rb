@@ -7,9 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = [{:username => 'admin', :password => 'password',
-          :admin => true, :cowboy => true, :handy => true, :doctor => true,
-          :email => 'hjt486@gmail.com', :phone => '4803307059',
-          :address => '5250 S Hardy Dr. APT 2022, Tempe, AZ 85283'}
+        :admin => true, :cowboy => false, :handy => false, :doctor => false,
+        :email => 'hjt486@gmail.com', :phone => '4803307059',
+        :address => '5250 S Hardy Dr. APT 2022, Tempe, AZ 85283'},
+        {:username => 'hjt486', :password => 'password',
+        :admin => false, :cowboy => true, :handy => true, :doctor => true,
+        :email => 'jiataihan@tamu.edu', :phone => '4807889687',
+        :address => '523 Southwest Parkway APT 104, College Station, TX 77840'}
   	 ]
 
 users.each do |user|

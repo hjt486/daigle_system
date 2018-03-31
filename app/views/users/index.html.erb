@@ -1,4 +1,4 @@
-<h1 align="center">All Managers and Cowboys</h1>
+<h1 align="center">Users</h1>
 <div align="center">
   <%= will_paginate %>
   <% @users.each do |user| %>
@@ -9,11 +9,29 @@
                 <li class="activity-title">
                     <%= link_to user.username, user_path(user) %>
                 </li>
+                <li>
+                  Identity:
+                  <li>
+                  <% if user.cowboy == true %>
+                  Animal Technician
+                  <% end %>
+                  </li>
+                  <% if user.handy == true %>
+                  Yard Technician
+                  <li>
+                  <% end %>
+                  <% if user.doctor == true %>
+                  </li>
+                  Medical Technician
+                  <li>
+                  <% end %>
+                  <% if user.cowboy != true && user.handy != true && user.doctor != true%>
+                  None
+                  <% end %>
+                  </li>
+                </li>
                 <li><small><%= pluralize(user.activities.count, "activity") if user.activities %></small></li>
-                <% if logged_in? and current_user.admin? %>
-                    <li><%= link_to "Delete this user", user_path(user), method: :delete,
-                            data: { confirm: "Are you sure you want to delete the user and all their activities?"}%></li>
-                <% end %>
+
             </div>
         </div>
     </ul>

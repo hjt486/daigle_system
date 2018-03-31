@@ -43,11 +43,17 @@
             </div>
             <% if logged_in? && (current_user == activity.user || current_user.admin?) %>
              <div class="activity-actions">
-                 <%= link_to "Edit this activity", edit_activity_path(activity),
-                                          class:"btn btn-xs btn-primary"%> |
-                 <%= link_to "Delete this activity", activity_path(activity),
-                                           method: :delete, data: {confirm: "Are you sure?"},
-                                           class:"btn btn-xs btn-danger" %>
+
+                <% if logged_in? && current_user == activity.user %>
+                  <%= link_to "Edit this activity", edit_activity_path(activity),
+                  class:"btn btn-xs btn-primary"%>
+                <% end %>
+                <% if logged_in? && current_user.admin? %>
+                <%= link_to "Delete these activities", activities_path(activity),
+                  method: :delete, data: {confirm: "Are you sure you want to delete this activity?"},
+                  class:"btn btn-xs btn-danger" %>
+                <% end %>
+
              </div>
             <% end %>
         </div>
