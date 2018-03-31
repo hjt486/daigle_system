@@ -3,28 +3,55 @@
     <div class="col-xs-8 col-xs-offset-2">
         <div class="well well-lg">
             <div class="activity-title">
-                <%= link_to activity.title, activity_path(activity) %>
+                Pen # <%= link_to activity.pen_id, activity_path(activity) %>
             </div>
             <div class="activity-body">
-                <%= truncate(activity.description, length: 100)%>
+              <div>
+                Total #: <%= activity.total_num %> |
+                Pull(s) #: <%= activity.pull_num %> |
+                Dead(s) #: <%= activity.dead_num %>
+              </div>
+              <div>
+                Feed? <% if activity.feed_check == true %>
+                  CHECKED |
+                  <% else %>
+                  unchecked |
+                  <% end %>
+                Water? <% if activity.water_check == true %>
+                  CHECKED |
+                  <% else %>
+                  unchecked |
+                  <% end %>
+                Mud? <% if activity.mud_check == true %>
+                  CHECKED |
+                  <% else %>
+                  unchecked |
+                  <% end %>
+                Need Maintenance? <% if activity.maintenance_check == true %>
+                  YES
+                  <% else %>
+                  no
+                  <% end %>
+              </div>
+
                 <div class="activity-meta-details">
-                  <small> Create by: <%= activity.user.username if activity.user%>,
-                                   <%= time_ago_in_words(activity.created_at) %> ago,
-                                   last updated: <%= time_ago_in_words(activity.updated_at) %> ago
-                  </small>  
-                </div>  
+                  <small> Animal Technician: <%= activity.user.username if activity.user%>,
+                                   Check-in time: <%= time_ago_in_words(activity.check_in) %> ago,
+                                   Check-out time:  <%= time_ago_in_words(activity.check_out) %> ago
+                  </small>
+                </div>
             </div>
             <% if logged_in? && (current_user == activity.user || current_user.admin?) %>
-             <div class="activity-actions"> 
-                 <%= link_to "Edit this activity", edit_activity_path(activity), 
+             <div class="activity-actions">
+                 <%= link_to "Edit this activity", edit_activity_path(activity),
                                           class:"btn btn-xs btn-primary"%> |
-                 <%= link_to "Delete this activity", activity_path(activity), 
-                                           method: :delete, data: {confirm: "Are you sure?"}, 
+                 <%= link_to "Delete this activity", activity_path(activity),
+                                           method: :delete, data: {confirm: "Are you sure?"},
                                            class:"btn btn-xs btn-danger" %>
-             </div> 
+             </div>
             <% end %>
         </div>
-    </div> 
+    </div>
 </div>
  <% end %>
 
