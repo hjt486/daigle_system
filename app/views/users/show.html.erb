@@ -6,9 +6,9 @@
 </div>
 <h4 align="center"><%= @user.username %>'s activities</h4>
 <div class="center">
-    <%= will_paginate @user_articles %>
+    <%= will_paginate @user_activities %>
 </div>    
-<%= render 'articles/article', obj: @user_articles %>
+<%= render 'activities/activity', obj: @user_activities %>
 <div class="center">
-    <%= will_paginate @user_articles %>
+    <%= will_paginate @user_activities %>
 </div>    

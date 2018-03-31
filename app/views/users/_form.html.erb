@@ -3,6 +3,7 @@
 <div class='row'>
     <div class='col-xs-12'>
       <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
           <div class="form-group">
               <div class="control-label col-sm-2">
                 <%= f.label :username %>
@@ -10,31 +11,81 @@
               <div class="col-sm-8">
                 <%= f.text_field :username, class: "form-control", placeholder: "Enter username", autofocus: true%>
               </div>
-          </div>      
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :email %><br/>
-              </div> 
-              <div class="col-sm-8">
-                <%= f.email_field :email, class: "form-control", placeholder: "Enter email"%>
-              </div>
-          </div>  
+          </div>
+
           <div class="form-group">
               <div class="control-label col-sm-2">
                 <%= f.label :password %><br/>
-              </div> 
+              </div>
               <div class="col-sm-8">
                 <%= f.password_field :password, class: "form-control", placeholder: "Enter password"%>
               </div>
-          </div>           
+          </div>
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :"Animal Technician?" %><br/>
+              </div>
+              <div class="col-sm-8">
+                <%= f.check_box :cowboy, {class: "form-control"}, "true", "false" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :"Yard Technician?" %><br/>
+              </div>
+              <div class="col-sm-8">
+                <%= f.check_box :handy, {class: "form-control"}, "true", "false" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :doctor %><br/>
+              </div>
+              <div class="col-sm-8">
+                <%= f.check_box :doctor, {class: "form-control"}, "true", "false" %>
+              </div>
+          </div>
+
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :email %><br/>
+              </div>
+              <div class="col-sm-8">
+                <%= f.email_field :email, class: "form-control", placeholder: "Enter email"%>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :phone %><br/>
+              </div>
+              <div class="col-sm-8">
+                <%= f.phone_field :phone, class: "form-control", placeholder: "Enter phone number XXX-XXX-XXXX"%>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :address %><br/>
+              </div>
+              <div class="col-sm-8">
+                <%= f.text_field :address, class: "form-control", placeholder: "Enter address"%>
+              </div>
+          </div>
+
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">    
+          <div class="col-sm-offset-2 col-sm-10">
             <%= f.submit(@user.new_record? ? "Sign up" : "Update your account", class: 'btn btn-primary btn-lg') %>
-          </div>    
-        </div>    
+          </div>
+        </div>
+
     <% end %>
     <div class="col-xs-4 col-xs-offset-4">
-     [ <%= link_to "Cancel request and return to activities listing", articles_path %> ]
+     [ <%= link_to "Cancel request and return to activities listing", activities_path %> ]
     </div>
     </div>
 </div>

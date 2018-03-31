@@ -1,0 +1,32 @@
+<% obj.each do |activity| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="well well-lg">
+            <div class="activity-title">
+                <%= link_to activity.title, activity_path(activity) %>
+            </div>
+            <div class="activity-body">
+                <%= truncate(activity.description, length: 100)%>
+                <div class="activity-meta-details">
+                  <small> Create by: <%= activity.user.username if activity.user%>,
+                                   <%= time_ago_in_words(activity.created_at) %> ago,
+                                   last updated: <%= time_ago_in_words(activity.updated_at) %> ago
+                  </small>  
+                </div>  
+            </div>
+            <% if logged_in? && (current_user == activity.user || current_user.admin?) %>
+             <div class="activity-actions"> 
+                 <%= link_to "Edit this activity", edit_activity_path(activity), 
+                                          class:"btn btn-xs btn-primary"%> |
+                 <%= link_to "Delete this activity", activity_path(activity), 
+                                           method: :delete, data: {confirm: "Are you sure?"}, 
+                                           class:"btn btn-xs btn-danger" %>
+             </div> 
+            <% end %>
+        </div>
+    </div> 
+</div>
+ <% end %>
+
+
+<%= link_to "Back to home", root_path%>

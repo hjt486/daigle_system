@@ -1,8 +1,8 @@
-<%= render 'shared/errors', obj: @article%>
+<%= render 'shared/errors', obj: @activity%>
 
 <div class='row'>
     <div class='col-xs-12'>
-      <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <%= form_for(@activity, :html => {class: "form-horizontal", role: "form"}) do |f| %>
           <div class="form-group">
               <div class="control-label col-sm-2">
                 <%= f.label :title%>
@@ -26,7 +26,7 @@
         </div>    
     <% end %>
     <div class="col-xs-4 col-xs-offset-4">
-     [ <%= link_to "Cancel request and return to activities listing", articles_path %> ]
+     [ <%= link_to "Cancel request and return to activities listing", activities_path %> ]
     </div>
     </div>
 </div>
