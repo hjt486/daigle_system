@@ -1,7 +1,6 @@
 class Activity < ActiveRecord::Base
     belongs_to :user
     belongs_to :pen
-    accepts_nested_attributes_for :pen
     validates :pen_id, numericality: { only_integer: true }
     validates :check_in, presence: true
     validates :check_out, presence: true

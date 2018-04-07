@@ -68,12 +68,6 @@ ActiveRecord::Schema.define(version: 20180406031813) do
   create_table "pens", force: :cascade do |t|
     t.integer "num"
     t.integer "total_num"
-    t.integer "pull_num"
-    t.integer "dead_num"
-    t.boolean "feed_check"
-    t.boolean "water_check"
-    t.boolean "mud_check"
-    t.boolean "maintenance_check"
   end
 
   create_table "users", force: :cascade do |t|

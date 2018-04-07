@@ -2,6 +2,69 @@ $navbar-default-bg: black;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@media
+only screen and (max-width: 1024px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+  /* Responsive Table */
+  	/* Force table to not be like tables anymore */
+#activities-tables
+{
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+    display: block;
+    }
+
+  	/* Hide table headers (but not display: none;, for accessibility) */
+  	thead tr {
+  		position: absolute;
+  		top: -9999px;
+  		left: -9999px;
+  	}
+
+  	tr { border: 1px solid #ccc; }
+
+  	td {
+  		/* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+      text-align:left;
+  	}
+
+  	td:before {
+  		/* Now like a table header */
+  		position: absolute;
+  		/* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align:left;
+      font-weight: bold;
+  	}
+
+  	/*
+  	Label the data
+  	*/
+  	td:nth-of-type(1):before { content: "Pen"; }
+  	td:nth-of-type(2):before { content: "User"; }
+  	td:nth-of-type(3):before { content: "Pull"; }
+  	td:nth-of-type(4):before { content: "Dead"; }
+  	td:nth-of-type(5):before { content: "Feed"; }
+  	td:nth-of-type(6):before { content: "Water"; }
+  	td:nth-of-type(7):before { content: "Mud"; }
+  	td:nth-of-type(8):before { content: "Maintenance"; }
+  	td:nth-of-type(9):before { content: "Check-in"; }
+  	td:nth-of-type(10):before { content: "Check-out"; }
+  }
+}
 
 #logo {
     float: left;
@@ -19,6 +82,12 @@ $navbar-default-bg: black;
 
 .center {
     text-align: center;
+}
+
+.empty {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 .jumbotron {

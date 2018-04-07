@@ -57,8 +57,7 @@ class PensController < ApplicationController
         end
 
         def pen_params
-            params.require(:pen).permit(:num, :total_num, :pull_num, :dead_num,
-            :feed_check, :water_check, :mud_check, :maintenance_check)
+            params.require(:pen).permit(:num, :total_num)
         end
 
         def require_admin
