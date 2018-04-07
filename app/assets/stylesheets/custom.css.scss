@@ -291,8 +291,25 @@ only screen and (max-width: 1024px),
 
 }
 
+.acceptable
+{
+  color: green;
+}
+
+.unacceptable
+{
+  color: red;
+}
+
+.unknown
+{
+  color: GoldenRod ;
+}
+
+
 table {
   font-size: large;
+  word-wrap: break-word;
 }
 
 footer {

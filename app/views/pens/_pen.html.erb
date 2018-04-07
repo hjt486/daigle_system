@@ -1,3 +1,4 @@
+<% @date = DateTime %>
 <div class="row">
   <div class="col-xs-12">
       <div class="well well-lg">
@@ -26,14 +27,33 @@
                <tr scope="row">
                 <td><%= pen.num %></td>
                 <td><%= pen.total_num %></td>
-                <% @activity =  activities.where(pen_id: pen.id).order("check_out").last %>
-                <td><%= @activity.pen_pull_num %></td>
-                <td><%= @activity.pen_dead_num %></td>
-                <td><% if @activity.pen_feed_check %>&#10003<% else %>&#10006<% end %></td>
-                <td><% if @activity.pen_water_check %>&#10003<% else %>&#10006<% end %></td>
-                <td><% if @activity.pen_mud_check %>&#10003<% else %>&#10006<% end %></td>
-                <td><% if @activity.pen_maintenance_check %>&#10003<% else %>&#10006<% end %></td>
-                <td><%= @activity.check_out.to_s(format = :long) %></td>
+                <% @activity_today =  activities.where(pen_id: pen.id).where("check_out > ?", @date.now.beginning_of_day).last %>
+                <% @activity_last =  activities.where(pen_id: pen.id).last %>
+                <% if @activity_today.present? %>
+                  <td><%= @activity_today.pen_pull_num %></td>
+                  <td><%= @activity_today.pen_dead_num %></td>
+                  <td><% if @activity_today.pen_feed_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
+                  <td><% if @activity_today.pen_water_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
+                  <td><% if @activity_today.pen_mud_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
+                  <td><% if @activity_today.pen_maintenance_check %><div class="unacceptable">&#9888</div><% else %><div class="acceptable">&#10003</div><% end %></td>
+                  <td><%= @activity_today.check_out.to_s(format = :long) %></td>
+                <% elsif @activity_last.present? %>
+                  <td><%= @activity_last.pen_pull_num %></td>
+                  <td><%= @activity_last.pen_dead_num %></td>
+                  <td><div class="unknown">&#63</div></td>
+                  <td><div class="unknown">&#63</div></td>
+                  <td><div class="unknown">&#63</div></td>
+                  <td><% if @activity_last.pen_maintenance_check %><div class="unacceptable">&#9888</div><% else %><div class="acceptable">&#10003</div><% end %></td>
+                  <td><%= @activity_last.check_out.to_s(format = :long) %></td>
+                <% else %>
+                  <td><small> - </small></td>
+                  <td><small> - </small></td>
+                  <td><small> - </small></td>
+                  <td><small> - </small></td>
+                  <td><small> - </small></td>
+                  <td><small> - </small></td>
+                  <td><small> - </small></td>
+                <% end %>
                 <td><%= link_to "Edit", edit_pen_path(pen.id), class:"btn btn-xs btn-primary"%></td>
               <% end %>
             </tbody>

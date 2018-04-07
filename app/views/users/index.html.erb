@@ -1,4 +1,4 @@
-<h1 align="center">Users</h1>
+<h1 align="center">All Users</h1>
 
 <% if current_user.admin? %>
 <div class="form-group">
@@ -14,7 +14,7 @@
   <%= will_paginate %>
   <% @users.each do |user| %>
     <div class="user-box well well-lg">
-      <div class="table-responsive">
+      <div class="table">
         <table>
           <tr scope="row"><td><%= link_to gravatar_for(user), user_path(user) %></td></tr>
           <tr scope="row"><td><h4>

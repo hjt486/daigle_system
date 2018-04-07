@@ -20,12 +20,11 @@ class PensController < ApplicationController
       # render plain: params[:activity].inspect
       #debugger
       @pen = Pen.new(pen_params)
-      @pen.user = current_user
        #@activity.save
       # redirect_to activities_path(@activity)
       if @pen.save
           flash[:success] = 'Pen was successfully created'
-          redirect_to pen_path(@pen)
+          redirect_to pens_path(@pen)
       else
           render 'new'
       end
@@ -68,7 +67,7 @@ class PensController < ApplicationController
             redirect_to root_path
           end
         end
-        
+
         def require_admin
            if logged_in? and !current_user.admin?
               flash[:danger] = "Only admin users can perform that action"
