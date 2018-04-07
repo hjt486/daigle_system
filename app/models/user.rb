@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
     validates :cowboy, inclusion: { in: [true, false] }
     validates :handy, inclusion: { in: [true, false] }
     validates :doctor, inclusion: { in: [true, false] }
+    validates :first_name, presence: true
+    validates :last_name, presence: true
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 105 },
               format: {with: VALID_EMAIL_REGEX}

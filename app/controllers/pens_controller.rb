@@ -4,6 +4,7 @@ class PensController < ApplicationController
 
     def index
        @pens = Pen.paginate(page: params[:page], per_page: 5)
+       @activities = Activity.paginate(page: params[:page], per_page: 5)
     end
 
     def new

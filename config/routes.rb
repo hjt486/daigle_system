@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'about', to:"pages#about"
 
   resources :activities, only: [:new, :index, :create]
+  resources :pens
 
   get 'add_user', to: 'users#new'
   resources :users, except: [:new]

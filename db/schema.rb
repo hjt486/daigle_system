@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.boolean  "cowboy"
     t.boolean  "handy"
     t.boolean  "doctor"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
     t.string   "phone"
     t.text     "address"

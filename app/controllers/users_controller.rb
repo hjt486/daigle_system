@@ -2,7 +2,7 @@ class UsersController < ApplicationController
    before_action :set_user, only: [ :edit, :update, :show]
    before_action :require_login, only: [:new, :index, :create, :edit, :show, :update, :destroy]
    before_action :require_same_user, only: [:edit, :update]
-   before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
+   before_action :require_admin, only: [:new, :create, :destroy]
 
    def index
       @users = User.paginate(page: params[:page], per_page: 5)
@@ -48,7 +48,8 @@ class UsersController < ApplicationController
 
    private
    def user_params
-      params.require(:user).permit(:username, :password, :cowboy, :handy, :doctor, :email, :phone, :address)
+      params.require(:user).permit(:username, :password, :cowboy, :handy, :doctor,
+                                   :first_name, :last_name,:email, :phone, :address)
    end
 
    def set_user
