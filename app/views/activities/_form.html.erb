@@ -5,37 +5,34 @@
       <%= form_for(@activity, :html => {class: "form-horizontal", role: "form"}) do |f| %>
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Pen#"%>
+                <%= f.label :"Pen#", class: "form-label"%>
               </div>
               <div class="col-sm-8">
-                <%= f.number_field :pen_id, class: "form-control", placeholder: "Enter the pen number", autofocus: true%>
+                <!-- <%= f.number_field :pen_id, class: "form-control", placeholder: "Enter the pen number", autofocus: true%>
+                -->
+                <%= f.select :pen_id, Pen.all.collect { |p| [ p.id, p.num ] }, :class => 'genForm_dropBox' %>
+              </div>
+          </div>
+
+            <!--
+            Pen.all.collect { |p| [ p.id, p.num ] }
+            -->
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :"Check in"%><br/>
+              </div>
+              <div class="col-sm-8">
+                <%= f.time_select :check_in, class: "form-control"%>
               </div>
           </div>
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Check in Date & Time"%><br/>
+                <%= f.label :"Check out"%><br/>
               </div>
               <div class="col-sm-8">
-                <%= f.datetime_select :check_in, class: "form-control"%>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Check out Date & Time"%><br/>
-              </div>
-              <div class="col-sm-8">
-                <%= f.datetime_select :check_out, class: "form-control"%>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Total#"%>
-              </div>
-              <div class="col-sm-8">
-                <%= f.number_field :total_num, class: "form-control", placeholder: "Enter the number number of animal(s)"%>
+                <%= f.time_select :check_out, class: "form-control"%>
               </div>
           </div>
 
@@ -44,7 +41,7 @@
                 <%= f.label :"Pull(s)#"%>
               </div>
               <div class="col-sm-8">
-                <%= f.number_field :pull_num, class: "form-control", placeholder: "Enter the number of sick animal(s)"%>
+                <%= f.number_field :pen_pull_num, class: "form-control", placeholder: "Enter the number of sick animal(s)"%>
               </div>
           </div>
 
@@ -53,81 +50,46 @@
                 <%= f.label :"Dead(s)#"%>
               </div>
               <div class="col-sm-8">
-                <%= f.number_field :dead_num, class: "form-control", placeholder: "Enter the number of dead animal(s)"%>
+                <%= f.number_field :pen_dead_num, class: "form-control", placeholder: "Enter the number of dead animal(s)"%>
               </div>
           </div>
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Feed?" %><br/>
+                <%= f.label :"Feed OK?" %><br/>
               </div>
               <div class="col-sm-8">
-                <%= f.check_box :feed_check, {class: "form-control"}, "true", "false" %>
+                <%= f.check_box :pen_feed_check, {class: "form-checkbox"}, "true", "false" %>
               </div>
           </div>
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Comment of Feeding (Optional)"%><br/>
+                <%= f.label :"Water OK?" %><br/>
               </div>
               <div class="col-sm-8">
-                <%= f.text_area :feed_comment, rows: 3, class: "form-control", placeholder: "Enter the comments of feeding"%>
+                <%= f.check_box :pen_water_check, {class: "form-checkbox"}, "true", "false" %>
               </div>
           </div>
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Water?" %><br/>
+                <%= f.label :"Mud OK?" %><br/>
               </div>
               <div class="col-sm-8">
-                <%= f.check_box :water_check, {class: "form-control"}, "true", "false" %>
+                <%= f.check_box :pen_mud_check, {class: "form-checkbox"}, "true", "false" %>
               </div>
           </div>
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Comment of Water (Optional)"%><br/>
+                <%= f.label :"Need Maintenance?" %><br/>
               </div>
               <div class="col-sm-8">
-                <%= f.text_area :water_comment, rows: 3, class: "form-control", placeholder: "Enter the comments of water supply"%>
+                <%= f.check_box :pen_maintenance_check, {class: "form-checkbox"}, "true", "false" %>
               </div>
           </div>
 
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Mud?" %><br/>
-              </div>
-              <div class="col-sm-8">
-                <%= f.check_box :mud_check, {class: "form-control"}, "true", "false" %>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Comment of Mud (Optional)"%><br/>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_area :mud_comment, rows: 3, class: "form-control", placeholder: "Enter the comments of mud condition"%>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Maintenance?" %><br/>
-              </div>
-              <div class="col-sm-8">
-                <%= f.check_box :maintenance_check, {class: "form-control"}, "true", "false" %>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Comment of Maintenance (Optional)"%><br/>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_area :maintenance_comment, rows: 3, class: "form-control", placeholder: "Enter the comments of maintenance"%>
-              </div>
-          </div>
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">

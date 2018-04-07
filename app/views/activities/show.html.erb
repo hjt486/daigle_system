@@ -18,12 +18,11 @@
     <% end %>
     <h4 class="center description"><strong>Details:</strong></h4>
     <div>
-                  Total #: <%= @activity.total_num %> |
-                  Pull(s) #: <%= @activity.pull_num %> |
-                  Dead(s) #: <%= @activity.dead_num %>
+                  Pull(s) #: <%= @activity.pen_pull_num %> |
+                  Dead(s) #: <%= @activity.pen_dead_num %>
                 </div>
                 <div>
-                  Feed? <% if @activity.feed_check == true %>
+                  Feed? <% if @activity.pen_feed_check == true %>
                     CHECKED
                     <% else %>
                     unchecked
@@ -31,13 +30,7 @@
                 </div>
 
                 <div>
-                    <% if @activity.feed_comment.present?%>
-                    Comment: <%= simple_format(@activity.feed_comment) %>
-                    <% end %>
-                </div>
-
-                <div>
-                  Water? <% if @activity.water_check == true %>
+                  Water? <% if @activity.pen_water_check == true %>
                     CHECKED
                     <% else %>
                     unchecked
@@ -45,13 +38,7 @@
                 </div>
 
                 <div>
-                    <% if @activity.water_comment.present?%>
-                    Comment: <%= simple_format(@activity.water_comment) %>
-                    <% end %>
-                </div>
-
-                <div>
-                  Mud? <% if @activity.mud_check == true %>
+                  Mud? <% if @activity.pen_mud_check == true %>
                     CHECKED
                     <% else %>
                     unchecked
@@ -59,22 +46,10 @@
                 </div>
 
                 <div>
-                    <% if @activity.mud_comment.present?%>
-                    Comment: <%= simple_format(@activity.mud_comment) %>
-                    <% end %>
-                </div>
-
-                <div>
-                  Need Maintenance? <% if @activity.maintenance_check == true %>
+                  Need Maintenance? <% if @activity.pen_maintenance_check == true %>
                     YES
                     <% else %>
                     no
-                    <% end %>
-                </div>
-
-                <div>
-                    <% if @activity.maintenance_comment.present?%>
-                    Comment: <%= simple_format(@activity.maintenance_comment) %>
                     <% end %>
                 </div>
 

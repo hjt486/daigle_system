@@ -59,8 +59,8 @@ class ActivitiesController < ApplicationController
         end
 
         def activity_params
-            params.require(:activity).permit(:pen_id, :check_in, :check_out, :total_num, :pull_num, :dead_num,
-            :feed_check, :feed_comment, :water_check, :water_comment, :mud_check, :mud_comment, :maintenance_check, :maintenance_comment)
+            params.require(:activity).permit(:pen_id, :check_in, :check_out, :pen_pull_num, :pen_dead_num,
+            :pen_feed_check, :pen_water_check, :pen_mud_check, :pen_maintenance_check)
         end
 
 

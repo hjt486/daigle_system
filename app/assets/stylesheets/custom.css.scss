@@ -60,11 +60,6 @@ $navbar-default-bg: black;
     padding-bottom: 15px;
 }
 
-.activity-body th, td {
-    border: 1px solid black;
-    text-align: center
-}
-
 .user-body {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -78,6 +73,28 @@ $navbar-default-bg: black;
 .listing {
     list-style: none;
     padding-left: 0;
+
+}
+
+.form-group{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: large;
+    line-height: 2;
+    display: inline;
+    height: 50px;
+}
+
+.form-control{
+    text-align: center;
+    font-size: large;
+    height: 50px;
+    display: inline;
+}
+
+.form-checkbox{
+  display: inline;
+  transform: scale(3);
 
 }
 

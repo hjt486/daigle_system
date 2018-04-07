@@ -11,26 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331052123) do
+ActiveRecord::Schema.define(version: 20180406031813) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "pen_id"
     t.datetime "check_in"
     t.datetime "check_out"
-    t.integer  "total_num"
-    t.integer  "pull_num"
-    t.integer  "dead_num"
-    t.boolean  "feed_check"
-    t.text     "feed_comment"
-    t.boolean  "water_check"
-    t.text     "water_comment"
-    t.boolean  "mud_check"
-    t.text     "mud_comment"
-    t.boolean  "maintenance_check"
-    t.text     "maintenance_comment"
+    t.integer  "pen_pull_num"
+    t.integer  "pen_dead_num"
+    t.boolean  "pen_feed_check"
+    t.boolean  "pen_water_check"
+    t.boolean  "pen_mud_check"
+    t.boolean  "pen_maintenance_check"
   end
 
+  add_index "activities", ["pen_id"], name: "index_activities_on_pen_id"
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
 
   create_table "maintenance_calls", force: :cascade do |t|
@@ -68,6 +64,17 @@ ActiveRecord::Schema.define(version: 20180331052123) do
 
   add_index "mud_calls", ["activitie_id"], name: "index_mud_calls_on_activitie_id"
   add_index "mud_calls", ["user_id"], name: "index_mud_calls_on_user_id"
+
+  create_table "pens", force: :cascade do |t|
+    t.integer "num"
+    t.integer "total_num"
+    t.integer "pull_num"
+    t.integer "dead_num"
+    t.boolean "feed_check"
+    t.boolean "water_check"
+    t.boolean "mud_check"
+    t.boolean "maintenance_check"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

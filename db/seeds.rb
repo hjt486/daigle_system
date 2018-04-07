@@ -16,6 +16,16 @@ users = [{:username => 'admin', :password => 'password',
         :address => '523 Southwest Parkway APT 104, College Station, TX 77840'}
   	 ]
 
+pens = [{:num => '1', :total_num => '100', :pull_num => '6', :dead_num => '2',
+        :feed_check => false, :water_check => false, :mud_check => false, :maintenance_check => false},
+        {:num => '2', :total_num => '101', :pull_num => '3', :dead_num => '1',
+        :feed_check => false, :water_check => false, :mud_check => false, :maintenance_check => false}
+       	 ]
+
 users.each do |user|
   User.create!(user)
+end
+
+pens.each do |pen|
+  Pen.create!(pen)
 end

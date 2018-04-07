@@ -2,52 +2,53 @@
   <div class="col-xs-8 col-xs-offset-2">
       <div class="well well-lg">
         <div class = "activity-body">
-         <table>
-          <thead>
-           <tr>
-           <th>Pen </th>
-           <th>User </th>
-           <th>Total </th>
-           <th>Pull </th>
-           <th>Dead </th>
-           <th>Feed </th>
-           <th>Water </th>
-           <th>Mud </th>
-           <th>Maintenance </th>
-           <th>Check-in </th>
-           <th>Check-out </th>
-           <th>Modify </th>
-          </tr>
-          </thead>
-          <% obj.each do |activity| %>
-            <tr>
-             <td><%= activity.pen_id %></td>
-             <td><small>Animal Technician: <%= activity.user.username if activity.user%></small></td>
-             <td><%= activity.total_num %></td>
-             <td><%= activity.pull_num %></td>
-             <td><%= activity.dead_num %></td>
-             <td><% if activity.feed_check %>&#10003<% else %>&#10006<% end %></td>
-             <td><% if activity.water_check %>&#10003<% else %>&#10006<% end %></td>
-             <td><% if activity.mud_check %>&#10003<% else %>&#10006<% end %></td>
-             <td><% if activity.maintenance_check %>&#10003<% else %>&#10006<% end %></td>
-             <td><small><%= activity.check_in.httpdate  %></small></td>
-             <td><small><%= activity.check_out.httpdate %></small></td>
-             <td><% if logged_in? && (current_user == activity.user || current_user.admin?) %>
-                          <% if logged_in? && current_user == activity.user %>
-                <%= link_to "Edit", edit_activity_path(activity),
-                class:"btn btn-xs btn-primary"%>
-              <% end %>
-              <% if logged_in? && current_user.admin? %>
-              <%= link_to "Delete", activities_path(activity),
-                method: :delete, data: {confirm: "Are you sure you want to delete this activity?"},
-                class:"btn btn-xs btn-danger" %>
-              <% end %>
-             </td>
-             <% end %>
-            </tr>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Pen </th>
+                  <th scope="col">User </th>
+                  <th scope="col">Pull </th>
+                  <th scope="col">Dead </th>
+                  <th scope="col">Feed </th>
+                  <th scope="col">Water </th>
+                  <th scope="col">Mud </th>
+                  <th scope="col">Maintenance </th>
+                  <th scope="col">Check-in </th>
+                  <th scope="col">Check-out </th>
+                  <th scope="col">Modify </th>
+                </tr>
+              </thead>
+
+              <% obj.each do |activity| %>
+               <tr scope="row">
+                <td><%= activity.pen_id %></td>
+                <td><small>Animal Technician: <%= activity.user.username if activity.user%></small></td>
+                <td><%= activity.pen_pull_num %></td>
+                <td><%= activity.pen_dead_num %></td>
+                <td><% if activity.pen_feed_check %>&#10003<% else %>&#10006<% end %></td>
+                <td><% if activity.pen_water_check %>&#10003<% else %>&#10006<% end %></td>
+                <td><% if activity.pen_mud_check %>&#10003<% else %>&#10006<% end %></td>
+                <td><% if activity.pen_maintenance_check %>&#10003<% else %>&#10006<% end %></td>
+                <td><small><%= activity.check_in.httpdate  %></small></td>
+                <td><small><%= activity.check_out.httpdate %></small></td>
+                <td><% if logged_in? && (current_user == activity.user || current_user.admin?) %>
+                      <% if logged_in? && current_user == activity.user %>
+                      <%= link_to "Edit", edit_activity_path(activity),
+                      class:"btn btn-xs btn-primary"%>
+                      <% end %>
+                    <% end %>
+                      <% if logged_in? && current_user.admin? %>
+                      <%= link_to "Delete", activities_path(activity),
+                      method: :delete, data: {confirm: "Are you sure you want to delete this activity?"},
+                      class:"btn btn-xs btn-danger" %>
+                    <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </table>
           </div>
-        <% end %>
-      </table>
+         </div>
       </div>
     </div>
   </div>
