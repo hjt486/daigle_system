@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root "pages#home"
   get 'about', to:"pages#about"
 
-  resources :activities
+  resources :activities, only: [:new, :index, :create]
 
   get 'add_user', to: 'users#new'
   resources :users, except: [:new]

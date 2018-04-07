@@ -1,8 +1,8 @@
 class ActivitiesController < ApplicationController
-    before_action :set_activity, only: [:edit, :update, :show, :destroy]
-    before_action :require_login, only: [:new, :index, :create, :edit, :show, :update, :destroy]
-    before_action :require_same_user, only: [:edit, :update]
-    before_action :require_admin, only: [:destroy]
+    #before_action :set_activity, only: [:edit, :update, :show, :destroy]
+    before_action :require_login, only: [:new, :index, :create]
+    #before_action :require_same_user, only: [:edit, :update]
+    #before_action :require_admin, only: [:destroy]
 
     def index
        @activities = Activity.paginate(page: params[:page], per_page: 5)
@@ -25,29 +25,18 @@ class ActivitiesController < ApplicationController
       # redirect_to activities_path(@activity)
       if @activity.save
           flash[:success] = 'activity was successfully created'
-          redirect_to activity_path(@activity)
+          redirect_to activities_path
       else
           render 'new'
       end
 
     end
 
-    def show
-
-
-    end
-
-    def destroy
-       @activity.destroy
-       flash[:danger] = "activity was successfully deleted"
-       redirect_to activities_path
-    end
-
     def update
 
         if @activity.update(activity_params)
             flash[:success] = "activity was successfully updated"
-            redirect_to activity_path(@activity)
+            redirect_to activities_path
         else
             render "edit"
         end
