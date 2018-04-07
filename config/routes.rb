@@ -12,9 +12,7 @@ Rails.application.routes.draw do
 
   resources :activities, only: [:new, :index, :create]
   resources :pens
-
-  get 'add_user', to: 'users#new'
-  resources :users, except: [:new]
+  resources :users
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

@@ -1,5 +1,6 @@
 class PensController < ApplicationController
     before_action :set_pen, only: [:edit, :update, :show, :destroy]
+    before_action :require_login, only: [:new, :index, :create, :edit, :show, :update, :destroy]
     before_action :require_admin, only: [:new, :index, :create, :edit, :show, :update, :destroy]
 
     def index
@@ -61,6 +62,13 @@ class PensController < ApplicationController
             params.require(:pen).permit(:num, :total_num)
         end
 
+        def require_login
+          if !logged_in?
+            flash[:danger] = "Please login first to perform that action"
+            redirect_to root_path
+          end
+        end
+        
         def require_admin
            if logged_in? and !current_user.admin?
               flash[:danger] = "Only admin users can perform that action"
