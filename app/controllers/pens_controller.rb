@@ -12,6 +12,10 @@ class PensController < ApplicationController
         @pen = Pen.new
     end
 
+    def show
+       @pen_activities = @pen.activities.paginate(page: params[:page], per_page: 5)
+    end
+
     def edit
 
     end
@@ -31,15 +35,10 @@ class PensController < ApplicationController
 
     end
 
-    def show
-
-
-    end
-
     def destroy
        @pen.destroy
        flash[:danger] = "Pen was successfully deleted"
-       redirect_to pen_path
+       redirect_to pens_path(@pen)
     end
 
     def update

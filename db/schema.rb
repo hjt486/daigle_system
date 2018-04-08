@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "reseolved"
-    t.text     "reseolved_comment"
   end
 
   add_index "maintenance_calls", ["activitie_id"], name: "index_maintenance_calls_on_activitie_id"

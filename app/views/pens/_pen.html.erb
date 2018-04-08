@@ -54,7 +54,7 @@
                   <td><small> - </small></td>
                   <td><small> - </small></td>
                 <% end %>
-                <td><%= link_to "Edit", edit_pen_path(pen.id), class:"btn btn-xs btn-primary"%></td>
+                <td><%= link_to "Detail", pen_path(pen.id), class:"btn btn-xs btn-primary"%>
               <% end %>
             </tbody>
             </table>
@@ -62,7 +62,7 @@
 
           <% else %>
           <div class="empty" >
-          No pens
+          No pen
           </div>
           <% end %>
 

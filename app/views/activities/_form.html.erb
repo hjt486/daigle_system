@@ -10,7 +10,7 @@
               <div class="col-sm-8">
                 <!-- <%= f.number_field :pen_id, class: "form-control", placeholder: "Enter the pen number", autofocus: true%>
                 -->
-                <%= f.select :pen_id, Pen.all.collect { |p| [ p.id, p.num ] }, :class => 'genForm_dropBox' %>
+                <%= f.select :pen_id, Pen.all.collect { |p| [ p.num, p.id ] }, :class => 'genForm_dropBox' %>
               </div>
           </div>
 

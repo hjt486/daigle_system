@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :activities, only: [:new, :index, :create]
   resources :pens
   resources :users
+  resources :maintenances
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
