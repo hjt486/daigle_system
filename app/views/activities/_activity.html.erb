@@ -38,10 +38,10 @@
                 </td>
                 <td><%= activity.pen_pull_num %></td>
                 <td><%= activity.pen_dead_num %></td>
-                <td><% if activity.pen_feed_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
-                <td><% if activity.pen_water_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
-                <td><% if activity.pen_mud_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
-                <td><% if activity.pen_maintenance_check %><div class="unacceptable">&#9888</div><% else %><div class="acceptable">&#10003</div><% end %></td>
+                <td><% if activity.pen_feed_check == 1 %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
+                <td><% if activity.pen_water_check == 1%><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
+                <td><% if activity.pen_mud_check == 1%><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
+                <td><% if activity.pen_maintenance_check == 1%><div class="unacceptable">&#9888</div><% else %><div class="acceptable">&#10003</div><% end %></td>
                 <td><%= activity.check_in.to_s(format = :long)  %></td>
                 <td><%= activity.created_at.to_s(format = :long) %></td>
               </tr>
