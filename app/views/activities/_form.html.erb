@@ -18,21 +18,12 @@
             Pen.all.collect { |p| [ p.id, p.num ] }
             -->
 
-          <div class="form-group">
-              <div class="control-label col-sm-2">
+          <div class="form-hidden">
+              <div>
                 <%= f.label :"Check in"%><br/>
               </div>
-              <div class="col-sm-8">
+              <div>
                 <%= f.time_select :check_in, class: "form-control"%>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Check out"%><br/>
-              </div>
-              <div class="col-sm-8">
-                <%= f.time_select :check_out, class: "form-control"%>
               </div>
           </div>
 
@@ -56,44 +47,72 @@
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Feed OK?" %><br/>
+                <%= f.label :"Food Status" %><br/>
               </div>
-              <div class="col-sm-8">
-                <%= f.check_box :pen_feed_check, {class: "form-checkbox"}, "true", "false" %>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :"Water OK?" %><br/>
-              </div>
-              <div class="col-sm-8">
-                <%= f.check_box :pen_water_check, {class: "form-checkbox"}, "true", "false" %>
+              <div class="control-content col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      Acceptable <%= f.radio_button :pen_feed_check, true%>
+                    </div>
+                    <div class="col-sm-5">
+                      Unacceptable <%= f.radio_button :pen_feed_check, false, :checked => true %>
+                    </div>
+                  </div>
               </div>
           </div>
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Mud OK?" %><br/>
+                <%= f.label :"Water Status" %><br/>
               </div>
-              <div class="col-sm-8">
-                <%= f.check_box :pen_mud_check, {class: "form-checkbox"}, "true", "false" %>
+              <div class="control-content col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      Acceptable <%= f.radio_button :pen_water_check, true%>
+                    </div>
+                    <div class="col-sm-5">
+                      Unacceptable <%= f.radio_button :pen_water_check, false, :checked => true %>
+                    </div>
+                  </div>
               </div>
           </div>
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Need Maintenance?" %><br/>
+                <%= f.label :"Mud Status" %><br/>
               </div>
-              <div class="col-sm-8">
-                <%= f.check_box :pen_maintenance_check, {class: "form-checkbox"}, "true", "false" %>
+              <div class="control-content col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      Acceptable <%= f.radio_button :pen_mud_check, true%>
+                    </div>
+                    <div class="col-sm-5">
+                      Unacceptable <%= f.radio_button :pen_mud_check, false, :checked => true %>
+                    </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :"Maintenance?" %><br/>
+              </div>
+              <div class="control-content col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      Needed <%= f.radio_button :pen_maintenance_check, true%>
+                    </div>
+                    <div class="col-sm-5">
+                      Not Needed <%= f.radio_button :pen_maintenance_check, false, :checked => true %>
+                    </div>
+                  </div>
               </div>
           </div>
 
 
         <div class="form-group">
           <div class="col-sm-12">
-            <%= f.submit class: 'btn btn-primary btn-lg' %>
+            <%= f.submit "Check-out", class: 'btn btn-primary btn-lg' %>
             <div class="btn">
             <%= link_to "Cancel", activities_path, class: 'btn btn-warning btn-lg'%>
             </div>

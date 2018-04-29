@@ -19,7 +19,17 @@ users = [{:username => 'admin', :password => 'password',
   	 ]
 
 pens = [{:num => '1', :total_num => '100'},
-        {:num => '2', :total_num => '200'}
+        {:num => '2', :total_num => '100'},
+        {:num => '3', :total_num => '100'},
+        {:num => '4', :total_num => '100'},
+        {:num => '5', :total_num => '100'},
+        {:num => '6', :total_num => '100'},
+        {:num => '7', :total_num => '100'},
+        {:num => '8', :total_num => '100'},
+        {:num => '9', :total_num => '100'},
+        {:num => '10', :total_num => '100'},
+        {:num => '11', :total_num => '100'},
+        {:num => '12', :total_num => '100'}
        	 ]
 
 users.each do |user|

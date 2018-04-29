@@ -1,0 +1,39 @@
+<div class="row">
+<div align="center">
+<% if @maintenances.present? %>
+  <% obj.each do |maintenance| %>
+    <% @pen = @pens.find(maintenance.pen_id) %>
+    <% @user = @users.find(maintenance.user_id) %>
+    <div class="maintenance-box well well-lg">
+      <div class="table">
+        <table>
+          <tr scope="row"><td><h4 align="center"> Pen #<%= @pen.num %></h4> </td></tr>
+          <tr scope="row"><td><hr /></td></tr>
+          <tr scope="row"><td><small align="center">Submitted by<small></td></tr>
+          <tr scope="row"><td>
+            <%= link_to(@user ) do %>
+            <%= @user.first_name %> <%= @user.last_name %>
+            <% end %>
+            </td>
+          <tr scope="row"><td><hr /></td></tr>
+          <tr scope="row"><td><small align="center"><%= maintenance.created_at.to_s(format = :long)%><small></td></tr>
+          <tr scope="row"><td><br /></td></tr>
+          <tr scope="row"><td>
+            <%= form_for(@new_maintenance, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <%= f.hidden_field :resolved, :value => true %>
+            <%= f.hidden_field :activity_id, :value => maintenance.id %>
+            <%= f.submit "Resolved",class: 'btn btn-success btn-lg' %>
+            <% end %>
+            </td></tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% else %>
+  <div class="well well-lg">
+    <div class="empty" > No maintenance request</div>
+  </div>
+<% end %>
+</div>

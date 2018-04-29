@@ -6,6 +6,8 @@ class ActivitiesController < ApplicationController
 
     def index
        @activities = Activity.paginate(page: params[:page], per_page: 5)
+       @users = User
+       @pens = Pen
     end
 
     def new
@@ -48,7 +50,7 @@ class ActivitiesController < ApplicationController
         end
 
         def activity_params
-            params.require(:activity).permit(:pen_id, :check_in, :check_out, :pen_pull_num, :pen_dead_num,
+            params.require(:activity).permit(:pen_id, :check_in, :pen_pull_num, :pen_dead_num,
             :pen_feed_check, :pen_water_check, :pen_mud_check, :pen_maintenance_check)
         end
 

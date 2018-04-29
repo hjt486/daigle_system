@@ -4,8 +4,8 @@ class PensController < ApplicationController
     before_action :require_admin, only: [:new, :index, :create, :edit, :show, :update, :destroy]
 
     def index
-       @pens = Pen.paginate(page: params[:page], per_page: 5)
-       @activities = Activity.paginate(page: params[:page], per_page: 5)
+       @pens = Pen.paginate(page: params[:page], per_page: 10)
+       @activities = Activity
     end
 
     def new
@@ -14,6 +14,8 @@ class PensController < ApplicationController
 
     def show
        @pen_activities = @pen.activities.paginate(page: params[:page], per_page: 5)
+       @users = User
+       @pens = Pen
     end
 
     def edit

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :pens
   resources :users
   resources :maintenances
+  resources :medical_calls
+  resources :mud_calls
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

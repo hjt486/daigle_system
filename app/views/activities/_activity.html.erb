@@ -22,9 +22,20 @@
               </thead>
               <tbody>
               <% obj.each do |activity| %>
+               <% @user = @users.find(activity.user_id) %>
+               <% @pen = @pens.find(activity.pen_id) %>
                <tr scope="row">
-                <td><%= activity.pen_id %></td>
-                <td><%= activity.user.username %></td>
+                <td>
+                  <%= link_to(@pen) do %>
+                  <%= activity.pen_id %>
+                  <% end %>
+                  </td>
+                <td>
+                  <%= link_to(@user) do %>
+                  <%= @user.first_name %> <%= @user.last_name %>
+                  <% end %>
+                  </td>
+                </td>
                 <td><%= activity.pen_pull_num %></td>
                 <td><%= activity.pen_dead_num %></td>
                 <td><% if activity.pen_feed_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
@@ -32,7 +43,7 @@
                 <td><% if activity.pen_mud_check %><div class="acceptable">&#10003</div><% else %><div class="unacceptable">&#9888</div><% end %></td>
                 <td><% if activity.pen_maintenance_check %><div class="unacceptable">&#9888</div><% else %><div class="acceptable">&#10003</div><% end %></td>
                 <td><%= activity.check_in.to_s(format = :long)  %></td>
-                <td><%= activity.check_out.to_s(format = :long) %></td>
+                <td><%= activity.created_at.to_s(format = :long) %></td>
               </tr>
             <% end %>
             </tbody>

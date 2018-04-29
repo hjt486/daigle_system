@@ -268,14 +268,49 @@ only screen and (max-width: 1024px),
   text-align: center;
 }
 
+.maintenance-box{
+  display: inline-block;
+  width: 250px;
+  height: 24em;
+  margin: 1em;
+}
+
+.medical_call-box{
+  display: inline-block;
+  width: 250px;
+  height: 24em;
+  margin: 1em;
+}
+
+.mud_call-box{
+  display: inline-block;
+  width: 250px;
+  height: 24em;
+  margin: 1em;
+}
+
+.maintenance-box table{
+  text-align: center;
+}
+.medical_call-box table{
+  text-align: center;
+}
+.mud_call-box table{
+  text-align: center;
+}
+
 
 .form-group{
     text-align: center;
-    text-transform: uppercase;
     font-size: large;
     line-height: 2;
-    display: inline;
-    height: 50px;
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.control-content{
+  vertical-align: middle;
 }
 
 .form-control{
@@ -288,7 +323,10 @@ only screen and (max-width: 1024px),
 .form-checkbox{
   display: inline;
   transform: scale(3);
+}
 
+.form-hidden{
+  display: none;
 }
 
 .acceptable
@@ -306,6 +344,12 @@ only screen and (max-width: 1024px),
   color: GoldenRod ;
 }
 
+.daigle{
+  text-align: left;
+  font-size: 2em;
+  font-weight: bold;
+  vertical-align: middle;
+}
 
 table {
   font-size: large;

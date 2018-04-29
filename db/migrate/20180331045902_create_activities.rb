@@ -4,7 +4,7 @@ class CreateActivities < ActiveRecord::Migration
       t.belongs_to :user, index:true
       t.belongs_to :pen, index:true
       t.datetime "check_in"
-      t.datetime "check_out"
+      t.timestamps
       t.integer  :pen_pull_num
       t.integer  :pen_dead_num
       t.boolean  :pen_feed_check

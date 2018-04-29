@@ -17,7 +17,8 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.integer  "user_id"
     t.integer  "pen_id"
     t.datetime "check_in"
-    t.datetime "check_out"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "pen_pull_num"
     t.integer  "pen_dead_num"
     t.boolean  "pen_feed_check"
@@ -29,39 +30,37 @@ ActiveRecord::Schema.define(version: 20180406031813) do
   add_index "activities", ["pen_id"], name: "index_activities_on_pen_id"
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
 
-  create_table "maintenance_calls", force: :cascade do |t|
+  create_table "maintenances", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "activitie_id"
+    t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "reseolved"
+    t.boolean  "resolved"
   end
 
-  add_index "maintenance_calls", ["activitie_id"], name: "index_maintenance_calls_on_activitie_id"
-  add_index "maintenance_calls", ["user_id"], name: "index_maintenance_calls_on_user_id"
+  add_index "maintenances", ["activity_id"], name: "index_maintenances_on_activity_id"
+  add_index "maintenances", ["user_id"], name: "index_maintenances_on_user_id"
 
-  create_table "mortality_alerts", force: :cascade do |t|
+  create_table "medical_calls", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "activitie_id"
+    t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "reseolved"
-    t.text     "reseolved_comment"
+    t.boolean  "resolved"
   end
 
-  add_index "mortality_alerts", ["activitie_id"], name: "index_mortality_alerts_on_activitie_id"
-  add_index "mortality_alerts", ["user_id"], name: "index_mortality_alerts_on_user_id"
+  add_index "medical_calls", ["activity_id"], name: "index_medical_calls_on_activity_id"
+  add_index "medical_calls", ["user_id"], name: "index_medical_calls_on_user_id"
 
   create_table "mud_calls", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "activitie_id"
+    t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "reseolved"
-    t.text     "reseolved_comment"
+    t.boolean  "resolved"
   end
 
-  add_index "mud_calls", ["activitie_id"], name: "index_mud_calls_on_activitie_id"
+  add_index "mud_calls", ["activity_id"], name: "index_mud_calls_on_activity_id"
   add_index "mud_calls", ["user_id"], name: "index_mud_calls_on_user_id"
 
   create_table "pens", force: :cascade do |t|

@@ -37,6 +37,8 @@ class UsersController < ApplicationController
 
    def show
       @user_activities = @user.activities.paginate(page: params[:page], per_page: 5)
+      @users = User
+      @pens = Pen
    end
 
    def destroy
