@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
     validates :username, presence: true,
               uniqueness: {case_sensitive: false},
               length: { minimum: 3, maximum: 25 }
-    validates :cowboy, inclusion: { in: [true, false] }
-    validates :handy, inclusion: { in: [true, false] }
-    validates :doctor, inclusion: { in: [true, false] }
+    validates :cowboy, inclusion: { in: 0..1 }
+    validates :handy, inclusion: { in: 0..1 }
+    validates :doctor, inclusion: { in: 0..1}
     validates :first_name, presence: true
     validates :last_name, presence: true
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

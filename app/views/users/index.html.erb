@@ -23,19 +23,19 @@
             <% end %>
           </h4></td></tr>
           <tr scope="row"><td><hr /></td></tr>
-          <% if user.admin == true %>
+          <% if user.admin == "1"  %>
             <tr scope="row"><td><small>Administrator</small></td></tr>
           <% end %>
-          <% if user.cowboy == true %>
+          <% if user.cowboy == "1"  %>
             <tr scope="row"><td><small>Animal Technician</small></td></tr>
           <% end %>
-          <% if user.handy == true %>
+          <% if user.handy == "1"  %>
             <tr scope="row"><td><small>Yard Technician</small></td></tr>
           <% end %>
-          <% if user.doctor == true %>
+          <% if user.doctor == "1"  %>
             <tr scope="row"><td><small>Medical Technician</small></td></tr>
           <% end %>
-          <% if user.admin != true && user.cowboy != true && user.handy != true && user.doctor != true%>
+          <% if user.admin != "1"  && user.cowboy != "1"  && user.handy != "1"  && user.doctor != "1" %>
             <tr scope="row"><td><small>None</small></td></tr>
           <% end %>
           <tr scope="row"><td><hr /></td></tr>

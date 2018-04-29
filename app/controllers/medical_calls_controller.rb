@@ -14,7 +14,7 @@ class MedicalCallsController < ApplicationController
        #select('DISTINCT ON ("pen_id") *').order(:activity_id, checkout: :desc, id: :desc)
        #select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
        #@medical_calls = Activity.joins('LEFT OUTER JOIN "medical_calls" ON "activities"."id" = "medical_calls"."activity_id"').select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       @medical_calls = @medical_calls.having("pen_pull_num > '0' and (medical_calls.resolved = 'f' or medical_calls.resolved is NULL)")
+       @medical_calls = @medical_calls.having("pen_pull_num > '0' and (medical_calls.resolved = 0 or medical_calls.resolved is NULL)")
        #@medical_calls = @medical_calls.where("medical_calls.resolved = 'true' or medical_calls.resolved is NULL")
        @medical_calls = @medical_calls.paginate(page: params[:page], per_page: 4)
 

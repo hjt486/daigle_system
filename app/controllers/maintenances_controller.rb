@@ -14,7 +14,7 @@ class MaintenancesController < ApplicationController
        #select('DISTINCT ON ("pen_id") *').order(:activity_id, checkout: :desc, id: :desc)
        #select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
        #@maintenances = Activity.joins('LEFT OUTER JOIN "maintenances" ON "activities"."id" = "maintenances"."activity_id"').select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       @maintenances = @maintenances.having("pen_maintenance_check = 't' and (maintenances.resolved = 'f' or maintenances.resolved is NULL)")
+       @maintenances = @maintenances.having("pen_maintenance_check = 1 and (maintenances.resolved = 0 or maintenances.resolved is NULL)")
        #@maintenances = @maintenances.where("maintenances.resolved = 'true' or maintenances.resolved is NULL")
        @maintenances = @maintenances.paginate(page: params[:page], per_page: 4)
 

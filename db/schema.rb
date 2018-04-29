@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.datetime "updated_at"
     t.integer  "pen_pull_num"
     t.integer  "pen_dead_num"
-    t.boolean  "pen_feed_check"
-    t.boolean  "pen_water_check"
-    t.boolean  "pen_mud_check"
-    t.boolean  "pen_maintenance_check"
+    t.integer  "pen_feed_check"
+    t.integer  "pen_water_check"
+    t.integer  "pen_mud_check"
+    t.integer  "pen_maintenance_check"
   end
 
   add_index "activities", ["pen_id"], name: "index_activities_on_pen_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "resolved"
+    t.integer  "resolved"
   end
 
   add_index "maintenances", ["activity_id"], name: "index_maintenances_on_activity_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "resolved"
+    t.integer  "resolved"
   end
 
   add_index "medical_calls", ["activity_id"], name: "index_medical_calls_on_activity_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "resolved"
+    t.integer  "resolved"
   end
 
   add_index "mud_calls", ["activity_id"], name: "index_mud_calls_on_activity_id"
@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(version: 20180406031813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.boolean  "admin",           default: false
-    t.boolean  "cowboy"
-    t.boolean  "handy"
-    t.boolean  "doctor"
+    t.integer  "admin",           default: 0
+    t.integer  "cowboy"
+    t.integer  "handy"
+    t.integer  "doctor"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"

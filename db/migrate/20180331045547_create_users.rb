@@ -4,10 +4,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string   "username"
       t.timestamps
       t.string   "password_digest"
-      t.boolean  "admin",           default: false
-      t.boolean  "cowboy"
-      t.boolean  "handy"
-      t.boolean  "doctor"
+      t.integer  "admin",           default: false
+      t.integer  "cowboy"
+      t.integer  "handy"
+      t.integer  "doctor"
       t.string   "first_name"
       t.string   "last_name"
       t.string   "email"

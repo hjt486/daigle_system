@@ -14,7 +14,7 @@ class MudCallsController < ApplicationController
        #select('DISTINCT ON ("pen_id") *').order(:activity_id, checkout: :desc, id: :desc)
        #select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
        #@mud_calls = Activity.joins('LEFT OUTER JOIN "mud_calls" ON "activities"."id" = "mud_calls"."activity_id"').select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       @mud_calls = @mud_calls.having("pen_mud_check = 'f' and (mud_calls.resolved = 'f' or mud_calls.resolved is NULL)")
+       @mud_calls = @mud_calls.having("pen_mud_check = 0 and (mud_calls.resolved = 0 or mud_calls.resolved is NULL)")
        #@mud_calls = @mud_calls.where("mud_calls.resolved = 'true' or mud_calls.resolved is NULL")
        @mud_calls = @mud_calls.paginate(page: params[:page], per_page: 4)
 
