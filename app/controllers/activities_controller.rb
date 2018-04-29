@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
     #before_action :set_activity, only: [:edit, :update, :show, :destroy]
-    before_action :require_login, only: [:new, :index, :create]
-    #before_action :require_same_user, only: [:edit, :update]
+    before_action :require_login, only: [:index]
+    before_action :require_cowboy, only: [:new, :create]
     #before_action :require_admin, only: [:destroy]
 
     def index
@@ -69,9 +69,9 @@ class ActivitiesController < ApplicationController
             end
         end
 
-        def require_admin
-           if logged_in? and !current_user.admin?
-              flash[:danger] = "Only admin users can perform that action"
+        def require_cowboy
+           if logged_in? and current_user.cowboy == 0
+              flash[:danger] = "Only animal technician can perform that action"
               redirect_to root_path
            end
          end

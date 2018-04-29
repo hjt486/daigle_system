@@ -1,7 +1,7 @@
 class PensController < ApplicationController
     before_action :set_pen, only: [:edit, :update, :show, :destroy]
-    before_action :require_login, only: [:new, :index, :create, :edit, :show, :update, :destroy]
-    before_action :require_admin, only: [:new, :index, :create, :edit, :show, :update, :destroy]
+    before_action :require_login, only: [:index, :show]
+    before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
     def index
        @pens = Pen.paginate(page: params[:page], per_page: 10)

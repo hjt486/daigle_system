@@ -1,5 +1,5 @@
 <h1 align="center">All activities</h1>
-
+<% if current_user.cowboy == 1%>
 <div class="form-group">
   <div class="col-sm-12">
     <div class="btn">
@@ -7,11 +7,11 @@
     </div>
 </div>
 </div>
-
+<% end %>
 <div align="center">
     <%= will_paginate %>
 </div>
 <%= render 'activity', obj: @activities%>
 <div align="center">
-    <%= will_paginate %>
+<%= will_paginate %>
 </div>

@@ -1,7 +1,7 @@
 class MedicalCallsController < ApplicationController
     #before_action :set_medical_call, only: [:edit, :update, :show, :destroy]
-    before_action :require_login, only: [:new, :index, :create]
-    #before_action :require_same_user, only: [:edit, :update]
+    #before_action :require_login, only: [:new, :index, :create]
+    before_action :require_admin_or_role, only: [:new, :index, :create]
     #before_action :require_admin, only: [:destroy]
 
     def index
@@ -55,15 +55,18 @@ class MedicalCallsController < ApplicationController
         end
 
         def require_same_user
-            if current_user != @medical_call.user and !current_user.admin?
+            if current_user != @maintenance.user and current_user.admin == 0
                 flash[:danger] = "You can only edit or delete your own medical_calls"
                 redirect_to root_path
             end
         end
 
-        def require_admin
-           if logged_in? and !current_user.admin?
-              flash[:danger] = "Only admin users can perform that action"
+        def require_admin_or_role
+           if !logged_in?
+              flash[:danger] = "Please login first to perform that action"
+              redirect_to root_path
+           elsif logged_in? and current_user.admin == 0 and current_user.doctor == 0
+              flash[:danger] = "Only admin and medical technician can perform that action"
               redirect_to root_path
            end
          end
