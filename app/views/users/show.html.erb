@@ -26,10 +26,10 @@
      <tr scope="row">
       <td><%= @user.username %></td>
       <td><ul>
-        <% if @user.admin == "1" %><li><small>Administrator</li></small><% end %>
-        <% if @user.cowboy == "1"  %><li><small>Animal Technician</li></small><% end %>
-        <% if @user.handy == "1"  %><li><small>Yard Technician</small></li><% end %>
-        <% if @user.doctor == "1"  %><li><small>Medical Technician</small></li><% end %></ul>
+        <% if @user.admin == 1 %><li><small>Administrator</li></small><% end %>
+        <% if @user.cowboy == 1  %><li><small>Animal Technician</li></small><% end %>
+        <% if @user.handy == 1  %><li><small>Yard Technician</small></li><% end %>
+        <% if @user.doctor == 1  %><li><small>Medical Technician</small></li><% end %></ul>
       </td>
       <td><%= mail_to @user.email, @user.email%></td>
       <td><%= @user.phone %></td>

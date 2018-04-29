@@ -1,5 +1,5 @@
 <h1 align="center">All Users</h1>
-<%= will_paginate %>
+<div align="center"><%= will_paginate %></div>
 <% if current_user.admin? %>
 <div class="form-group">
   <div class="col-sm-12">
@@ -11,7 +11,6 @@
 <% end %>
 
 <div align="center">
-  <%= will_paginate %>
   <% @users.each do |user| %>
     <div class="user-box well well-lg">
       <div class="table">
@@ -23,19 +22,19 @@
             <% end %>
           </h4></td></tr>
           <tr scope="row"><td><hr /></td></tr>
-          <% if user.admin == "1"  %>
+          <% if user.admin == 1  %>
             <tr scope="row"><td><small>Administrator</small></td></tr>
           <% end %>
-          <% if user.cowboy == "1"  %>
+          <% if user.cowboy == 1  %>
             <tr scope="row"><td><small>Animal Technician</small></td></tr>
           <% end %>
-          <% if user.handy == "1"  %>
+          <% if user.handy == 1  %>
             <tr scope="row"><td><small>Yard Technician</small></td></tr>
           <% end %>
-          <% if user.doctor == "1"  %>
+          <% if user.doctor == 1  %>
             <tr scope="row"><td><small>Medical Technician</small></td></tr>
           <% end %>
-          <% if user.admin != "1"  && user.cowboy != "1"  && user.handy != "1"  && user.doctor != "1" %>
+          <% if user.admin != 1  && user.cowboy != 1  && user.handy != 1  && user.doctor != 1 %>
             <tr scope="row"><td><small>None</small></td></tr>
           <% end %>
           <tr scope="row"><td><hr /></td></tr>
