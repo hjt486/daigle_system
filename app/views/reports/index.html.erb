@@ -1,8 +1,8 @@
 <h1 align="center">Monthly Reports</h1>
 <div align="center">
-<%= form_for :date_form do |f| %>
+<%= form_for :string_form do |f| %>
   <%= f.label :date %>
-  <%= f.text_field :date, :value => "yyyy-mm" %>
+  <%= f.text_field :string, :value => "yyyy-mm" %>
   <%= f.submit "Search", :value => "Search" %>
 <% end %>
 
