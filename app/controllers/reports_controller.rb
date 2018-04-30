@@ -17,8 +17,10 @@ class ReportsController < ApplicationController
        @activities = Activity
        @users = User
        @pens = Pen
-       @reports = @activities.where(["created_at LIKE ?", "%#{params[:string_form][:date]}%"]).paginate(page: params[:page], per_page: 5)
-       #@reports = @activities.find(:all, :conditions => "created_at >= to_timestamp(?)", "%#{params[:date_form][:date]}%").paginate(page: params[:page], per_page: 5)
+       @y = params[:date_form][:year]
+       @m = params[:date_form][:month]
+       #@reports = @activities.where(["created_at LIKE ?", "%#{params[:date_form][:date]}%"]).paginate(page: params[:page], per_page: 5)
+       @reports = @activities.where("extract(year from created_at) = ? and extract(month from created_at) = ?", @y, @m).paginate(page: params[:page], per_page: 5)
     end
 
 
