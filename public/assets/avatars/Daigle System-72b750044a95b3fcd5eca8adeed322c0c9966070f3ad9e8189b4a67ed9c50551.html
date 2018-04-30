@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daigle System</title>
+  <link rel="stylesheet" media="all" href="/assets/custom.self-1a7d79fecd1d22448610e1500395aab11140fe7b2233aeaf290a599fc6ff9000.css?body=1" data-turbolinks-track="true" />
+<link rel="stylesheet" media="all" href="/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" data-turbolinks-track="true" />
+  <script src="/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/transition.self-6ad2488465135ab731a045a8ebbe3ea2fc501aed286042496eda1664fdd07ba9.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/alert.self-742145c5bb847aafdadc6e339be795628f8bc25f177e851f03a8c42278eb0312.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/button.self-126ac9bf0e7f2d8568f8da3a00fd5f0fac6eae0946331003370161fbf8d7975e.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/carousel.self-e47323f363ceb3dc0bdbce05e36e709ed428e339833a41140a85cb0af24b8127.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/collapse.self-2eb697f62b587bb786ff940d82dd4be88cdeeaf13ca128e3da3850c5fcaec301.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/dropdown.self-561cca1cbaf67474e01e9536f106bad541594860a6df997004591c1c1957a147.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/modal.self-3e78617ade5663314b7ee0ea10375a5b34d59ffbade44939e3f2a4e4ef2019b3.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/tab.self-5bf7078b682f8b131332eefa46b45fa5eff2eca745fc0d03e2991450888f7c28.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/affix.self-6d6f1a7fc5c8aabf3547fa1b794fab6268f54bc55ad815e55873c71f52513517.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/scrollspy.self-969f3c5f48cdf1e439c7fa1154c13b948715f5c689f87837c0b64521d3b46ef6.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/tooltip.self-05afb177e08f98997ccfc84fa08a215e4b27d48d5fe4d049080675e9dffd8199.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap/popover.self-0aa93860b59fe7393f1dd490f54b3cb994f9d6155adffce034d4e14ae361b041.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/turbolinks.self-2db6ec539b9190f75e1d477b305df53d12904d5cafdd47c7ffd91ba25cbec128.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" data-turbolinks-track="true"></script>
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="do97/OyMus73qLMfsDEx312+8NcmmNvbD2H5fuNeXJrdBVIKw2zPGoQM/K+UKsSCJOKf2bB2aOv6/Cr4u8L8Rw==" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" id="logo" href="/">Daigle System</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+           aria-haspopup="true" aria-expanded="false">Activities<span class="caret"></span></a>
+           <ul class="dropdown-menu">
+            <li><a href="/activities">All activities</a></li>
+            <li><a href="/activities/new">Check-in</a></li>
+          </ul>
+         </li>
+         <li><a href="/pens">Pens</a>
+         <li><a href="/users">Users</a></li>
+         <li><a href="/maintenances">Maintenance</a></li>
+         <li><a href="/medical_calls">Cares</a></li>
+         <li><a href="/mud_calls">Mud</a></li>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a rel="nofollow" data-method="delete" href="/logout">Log out</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class='alert alert-success'>
+      <a href="#" class="close" data-dismiss="alert">&#215;</a>
+      <div id="flash_success">activity was successfully created</div>
+    </div>
+  </div>
+</div>  
+  <div class="container-fluid">
+    <h1 align="center">All activities</h1>
+
+<div class="form-group">
+  <div class="col-sm-12">
+    <div class="btn">
+    <a class="btn btn-primary btn-lg" href="/activities/new">Check-in</a>
+    </div>
+</div>
+</div>
+
+<div align="center">
+    
+</div>
+<div class="row">
+  <div class="col-xs-12">
+      <div class="well well-lg">
+        <div class = "activity-body">
+          <div id="activities-tables">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Pen</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Pull</th>
+                  <th scope="col">Dead</th>
+                  <th scope="col">Feed</th>
+                  <th scope="col">Water</th>
+                  <th scope="col">Mud</th>
+                  <th scope="col">Maintenance</th>
+                  <th scope="col">Check-in</th>
+                  <th scope="col">Check-out</th>
+                </tr>
+              </thead>
+              <tbody>
+               <tr scope="row">
+                <td>
+                  <a href="/pens/1">
+                  1
+</a>                  </td>
+                <td>
+                  <a href="/users/1">
+                  Ted Hahn
+</a>                  </td>
+                </td>
+                <td>0</td>
+                <td>0</td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="unacceptable">&#9888</div></td>
+                <td>April 29, 2018 14:57</td>
+                <td>April 29, 2018 15:02</td>
+              </tr>
+               <tr scope="row">
+                <td>
+                  <a href="/pens/1">
+                  1
+</a>                  </td>
+                <td>
+                  <a href="/users/1">
+                  Ted Hahn
+</a>                  </td>
+                </td>
+                <td>0</td>
+                <td>0</td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="unacceptable">&#9888</div></td>
+                <td>April 29, 2018 15:02</td>
+                <td>April 29, 2018 15:02</td>
+              </tr>
+               <tr scope="row">
+                <td>
+                  <a href="/pens/1">
+                  1
+</a>                  </td>
+                <td>
+                  <a href="/users/1">
+                  Ted Hahn
+</a>                  </td>
+                </td>
+                <td>0</td>
+                <td>0</td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="unacceptable">&#9888</div></td>
+                <td>April 29, 2018 15:04</td>
+                <td>April 29, 2018 15:04</td>
+              </tr>
+               <tr scope="row">
+                <td>
+                  <a href="/pens/12">
+                  12
+</a>                  </td>
+                <td>
+                  <a href="/users/1">
+                  Ted Hahn
+</a>                  </td>
+                </td>
+                <td>1</td>
+                <td>0</td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="acceptable">&#10003</div></td>
+                <td><div class="unacceptable">&#9888</div></td>
+                <td>April 29, 2018 15:04</td>
+                <td>April 29, 2018 15:04</td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+
+
+         </div>
+      </div>
+    </div>
+  </div>
+
+<div align="center">
+    
+</div>
+
+  </div>
+  <div class='container-fluid'>
+    <footer class="footer">
+        <small>
+            Copyright &copy 2018; <a href="/about">Team Fantastic6</a>
+        </small>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</div>
+
+
+
+</body>
+</html>
