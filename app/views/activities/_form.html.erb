@@ -112,9 +112,9 @@
 
         <div class="form-group">
           <div class="col-sm-12">
-            <%= f.submit "Check-out", class: 'btn btn-primary btn-lg' %>
+            <%= f.submit "Check-out", class: 'btn btn-primary btn-lg' , data: {confirm: "Please confirm the check-out action"} %>
             <div class="btn">
-            <%= link_to "Cancel", activities_path, class: 'btn btn-warning btn-lg'%>
+            <%= link_to "Cancel", activities_path, class: 'btn btn-warning btn-lg', data: {confirm: "Are you sure to cancel? Check-in time stamp will be lost!"} %>
             </div>
           </div>
         <% end %>

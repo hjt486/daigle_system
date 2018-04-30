@@ -9,13 +9,14 @@ class MaintenancesController < ApplicationController
        @pens = Pen
        @new_maintenance = Maintenance.new
        @users = User
-       #select('DISTINCT ON ("group") *').order(:group, date: :desc, id: :desc)
-       @maintenances = Activity.joins('LEFT OUTER JOIN "maintenances" ON "activities"."id" = "maintenances"."activity_id"').group("pen_id").select('activities.*').order(:pen_id, id: :desc)
-       #select('DISTINCT ON ("pen_id") *').order(:activity_id, checkout: :desc, id: :desc)
-       #select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       #@maintenances = Activity.joins('LEFT OUTER JOIN "maintenances" ON "activities"."id" = "maintenances"."activity_id"').select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       @maintenances = @maintenances.having("pen_maintenance_check = 1 and (maintenances.resolved = 0 or maintenances.resolved is NULL)")
-       #@maintenances = @maintenances.where("maintenances.resolved = 'true' or maintenances.resolved is NULL")
+       @maintenances = Activity.find_by_sql("select x.id, x.user_id, x.pen_id, x.created_at, x.pen_maintenance_check, y.resolved
+       from(
+       select a.id, a.pen_id, a.created_at, a.user_id, a.pen_maintenance_check from (
+       select max(activities.created_at) as created_at from activities group by activities.pen_id
+       ) as b
+       inner join activities as a on a.created_at = b.created_at) as x
+       left outer join maintenances as y on x.id = y.activity_id
+       where x.pen_maintenance_check = 1 and (y.resolved = 0 or y.resolved is NULL)")
        @maintenances = @maintenances.paginate(page: params[:page], per_page: 4)
 
        #.paginate(page: params[:page], per_page: 5)

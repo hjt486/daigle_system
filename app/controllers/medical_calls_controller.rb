@@ -9,13 +9,14 @@ class MedicalCallsController < ApplicationController
        @pens = Pen
        @new_medical_call = Medical_call.new
        @users = User
-       #select('DISTINCT ON ("group") *').order(:group, date: :desc, id: :desc)
-       @medical_calls = Activity.joins('LEFT OUTER JOIN "medical_calls" ON "activities"."id" = "medical_calls"."activity_id"').group("pen_id").select('activities.*').order(:pen_id, id: :desc)
-       #select('DISTINCT ON ("pen_id") *').order(:activity_id, checkout: :desc, id: :desc)
-       #select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       #@medical_calls = Activity.joins('LEFT OUTER JOIN "medical_calls" ON "activities"."id" = "medical_calls"."activity_id"').select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       @medical_calls = @medical_calls.having("pen_pull_num > '0' and (medical_calls.resolved = 0 or medical_calls.resolved is NULL)")
-       #@medical_calls = @medical_calls.where("medical_calls.resolved = 'true' or medical_calls.resolved is NULL")
+       @medical_calls = Activity.find_by_sql("select x.id, x.user_id, x.pen_id, x.created_at, x.pen_pull_num, y.resolved
+       from(
+       select a.id, a.pen_id, a.created_at, a.user_id, a.pen_pull_num from (
+       select max(activities.created_at) as created_at from activities group by activities.pen_id
+       ) as b
+       inner join activities as a on a.created_at = b.created_at) as x
+       left outer join medical_calls as y on x.id = y.activity_id
+       where x.pen_pull_num > 0 and (y.resolved = 0 or y.resolved is NULL)")
        @medical_calls = @medical_calls.paginate(page: params[:page], per_page: 4)
 
        #.paginate(page: params[:page], per_page: 5)

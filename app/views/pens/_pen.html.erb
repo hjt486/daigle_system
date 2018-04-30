@@ -27,8 +27,8 @@
                <tr scope="row">
                 <td><%= pen.num %></td>
                 <td><%= pen.total_num %></td>
-                <% @activity_today =  activities.where(pen_id: pen.id).where("created_at > ?", @date.now.beginning_of_day).last %>
-                <% @activity_last =  activities.where(pen_id: pen.id).last %>
+                <% @activity_today =  @activities.where(pen_id: pen.id).where("created_at > ?", @date.now.beginning_of_day).last %>
+                <% @activity_last =  @activities.where(pen_id: pen.id).last %>
                 <% if @activity_today.present? %>
                   <td><%= @activity_today.pen_pull_num %></td>
                   <td><%= @activity_today.pen_dead_num %></td>

@@ -1,4 +1,4 @@
-<h1 align="center">All pens</h1>
+<h1 align="center">All Pens</h1>
 <% if current_user.admin == 1 %>
 <div class="form-group">
   <div class="col-sm-12">
@@ -11,7 +11,7 @@
 <div align="center">
     <%= will_paginate %>
 </div>
-<%= render 'pen', obj: @pens, activities: @activities %>
+<%= render 'pen', obj: @pens %>
 <div align="center">
     <%= will_paginate %>
 </div>

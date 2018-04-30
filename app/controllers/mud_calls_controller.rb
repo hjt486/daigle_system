@@ -9,13 +9,14 @@ class MudCallsController < ApplicationController
        @pens = Pen
        @new_mud_call = Mud_call.new
        @users = User
-       #select('DISTINCT ON ("group") *').order(:group, date: :desc, id: :desc)
-       @mud_calls = Activity.joins('LEFT OUTER JOIN "mud_calls" ON "activities"."id" = "mud_calls"."activity_id"').group("pen_id").select('activities.*').order(:pen_id, id: :desc)
-       #select('DISTINCT ON ("pen_id") *').order(:activity_id, checkout: :desc, id: :desc)
-       #select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       #@mud_calls = Activity.joins('LEFT OUTER JOIN "mud_calls" ON "activities"."id" = "mud_calls"."activity_id"').select("activities.*").group("activities.pen_id").order("activities.check_out DESC").limit(1)
-       @mud_calls = @mud_calls.having("pen_mud_check = 0 and (mud_calls.resolved = 0 or mud_calls.resolved is NULL)")
-       #@mud_calls = @mud_calls.where("mud_calls.resolved = 'true' or mud_calls.resolved is NULL")
+       @mud_calls = Activity.find_by_sql("select x.id, x.user_id, x.pen_id, x.created_at, x.pen_mud_check, y.resolved
+       from(
+       select a.id, a.pen_id, a.created_at, a.user_id, a.pen_mud_check from (
+       select max(activities.created_at) as created_at from activities group by activities.pen_id
+       ) as b
+       inner join activities as a on a.created_at = b.created_at) as x
+       left outer join mud_calls as y on x.id = y.activity_id
+       where x.pen_mud_check = 0 and (y.resolved = 0 or y.resolved is NULL)")
        @mud_calls = @mud_calls.paginate(page: params[:page], per_page: 4)
 
        #.paginate(page: params[:page], per_page: 5)
