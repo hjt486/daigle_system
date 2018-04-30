@@ -63,6 +63,7 @@ only screen and (max-width: 1024px),
   	td:nth-of-type(8):before { content: "Maintenance"; }
   	td:nth-of-type(9):before { content: "Check-in"; }
   	td:nth-of-type(10):before { content: "Check-out"; }
+    td:nth-of-type(11):before { content: "Riding Time(mins)"; }
   }
 
   #pens-tables
@@ -203,9 +204,13 @@ only screen and (max-width: 1024px),
 }
 
 .jumbotron {
-    background-image: asset-url('cow2.jpg');
-    background-size: cover;
-    height: 600px;
+    background-image: asset-url('bg.png'),
+    linear-gradient(to left, LightCyan , DeepSkyBlue);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right bottom;
+    height: auto;
+    width: auto;
 }
 
 .jumbotron h1 {

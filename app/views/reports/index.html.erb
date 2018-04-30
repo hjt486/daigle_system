@@ -1,0 +1,17 @@
+<h1 align="center">Monthly Reports</h1>
+<div align="center">
+<%= form_for :date_form do |f| %>
+  <%= f.label :date %>
+  <%= f.text_field :date, :value => "yyyy-mm" %>
+  <%= f.submit "Search", :value => "Search" %>
+<% end %>
+
+</div>
+
+<div align="center">
+    <%= will_paginate %>
+</div>
+<%= render 'activities/activity', obj: @reports%>
+<div align="center">
+    <%= will_paginate %>
+</div>

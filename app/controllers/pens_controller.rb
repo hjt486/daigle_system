@@ -4,8 +4,30 @@ class PensController < ApplicationController
     before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
     def index
+       set_uri = false
        @pens = Pen.paginate(page: params[:page], per_page: 10)
-       @activities = Activity
+       @activities = Activity.all
+       if(params[:sort]!=nil)
+        session[:sort]=params[:sort]
+        if(params[:sort]=="num")
+           @pens = @pens.order(:num)
+           @title = "hilite"
+        end
+      else
+       if(session[:sort] != nil)
+          params[:sort]=session[:sort]
+          set_uri=true
+          case params[:sort]
+          when "num"
+              @pens = @pens.order(:num)
+              @title = "hilite"
+          # when "check_out"
+          #     # @activities = @activities.order(:check_out)
+          #     @pen_activities = @pen_activities.order(:check_out)
+          #     @date = "hilite"
+          end
+       end
+      end
     end
 
     def new

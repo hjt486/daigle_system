@@ -26,6 +26,9 @@
          </li>
          <% else %>
          <li><%= link_to "Activities", activities_path %></li>
+         <% if current_user.admin == 1 %>
+         <li><%= link_to "Reports", reports_path %></li>
+         <% end %>
          <% end %>
          <li><%= link_to "Pens", pens_path %>
          <li><%= link_to "Users", users_path %></li>

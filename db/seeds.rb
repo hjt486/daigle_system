@@ -63,10 +63,38 @@ pens = [{:num => '1', :total_num => '100'},
         {:num => '12', :total_num => '100'}
        	 ]
 
+activities = [{:user_id => '2',
+              :pen_id => '1',
+              :check_in => '2017-05-29 10:00:00.000000',
+              :created_at => '2017-05-29 10:15:00.000000',
+              :updated_at => '2017-05-29 10:15:00.000000',
+              :pen_pull_num => '5',
+              :pen_dead_num => '1',
+              :pen_feed_check => '1',
+              :pen_water_check => '1',
+              :pen_mud_check => '1',
+              :pen_maintenance_check => '1'},
+              {:user_id => '2',
+              :pen_id => '2',
+              :check_in => '2017-05-30 11:00:00.000000',
+              :created_at => '2017-05-30 11:15:00.000000',
+              :updated_at => '2017-05-30 11:15:00.000000',
+              :pen_pull_num => '2',
+              :pen_dead_num => '3',
+              :pen_feed_check => '0',
+              :pen_water_check => '1',
+              :pen_mud_check => '0',
+              :pen_maintenance_check => '0'},
+        ]
+
 users.each do |user|
   User.create!(user)
 end
 
 pens.each do |pen|
   Pen.create!(pen)
+end
+
+activities.each do |activity|
+  Activity.create!(activity)
 end

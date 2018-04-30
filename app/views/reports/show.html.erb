@@ -1,0 +1,11 @@
+<h1 align="center">Monthly Report</h1>
+
+<div align="center" ><%= link_to 'return', reports_path, class: 'btn btn-warning btn-lg'%></div>
+<div align="center" ><br></div>
+<div align="center">
+    <%= will_paginate %>
+</div>
+<%= render 'activities/activity', obj: @reports%>
+<div align="center">
+    <%= will_paginate %>
+</div>

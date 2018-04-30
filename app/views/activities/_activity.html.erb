@@ -2,7 +2,7 @@
   <div class="col-xs-12">
       <div class="well well-lg">
         <div class = "activity-body">
-          <% if @activities.present? or @user_activities.present? or @pen_activities.present?%>
+          <% if @activities.present? or @user_activities.present? or @pen_activities.present? or @reports.present?%>
           <div id="activities-tables">
           <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -18,6 +18,7 @@
                   <th scope="col">Maintenance</th>
                   <th scope="col">Check-in</th>
                   <th scope="col">Check-out</th>
+                  <th scope="col">Riding Time(mins)</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,6 +45,7 @@
                 <td><% if activity.pen_maintenance_check == 1%><div class="unacceptable">&#9888</div><% else %><div class="acceptable">&#10003</div><% end %></td>
                 <td><%= activity.check_in.to_s(format = :long)  %></td>
                 <td><%= activity.created_at.to_s(format = :long) %></td>
+                <td><%= ((activity.created_at - activity.check_in)/1.minute).round %></td>
               </tr>
             <% end %>
             </tbody>

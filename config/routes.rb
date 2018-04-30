@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :maintenances
   resources :medical_calls
   resources :mud_calls
+  get 'reports', to:"reports#index"
+  post 'reports', to:"reports#show"
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
