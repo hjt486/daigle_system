@@ -22,7 +22,7 @@
             <%= form_for(@new_mud_call, :html => {class: "form-horizontal", role: "form"}) do |f| %>
             <%= f.hidden_field :resolved, :value => 1  %>
             <%= f.hidden_field :activity_id, :value => mud_call.id %>
-            <%= f.submit "Resolved",class: 'btn btn-success btn-lg', data: {confirm: "Please confirm the issue has been resolved"} %>
+            <%= f.submit "Resolved",class: 'btn btn-success btn-lg' %>
             <% end %>
             </td></tr>
         </table>

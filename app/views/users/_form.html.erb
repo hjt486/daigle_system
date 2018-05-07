@@ -24,7 +24,7 @@
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"First name" %><br/>
+                <%= f.label :first_name, "First name" %><br/>
               </div>
               <div class="col-sm-8">
                 <%= f.text_field :first_name, class: "form-control", placeholder: "Enter first name"%>
@@ -33,7 +33,7 @@
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Last name" %><br/>
+                <%= f.label :last_name ,"Last name" %><br/>
               </div>
               <div class="col-sm-8">
                 <%= f.text_field :last_name, class: "form-control", placeholder: "Enter last name"%>
@@ -42,7 +42,7 @@
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Animal Technician?" %><br/>
+                <%= f.label :cowboy, "Animal Technician?" %><br/>
               </div>
               <div class="col-sm-8">
                 <%= f.check_box :cowboy, {class: "form-checkbox"}, 1, "0" %>
@@ -51,7 +51,7 @@
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Yard Technician?" %><br/>
+                <%= f.label :handy, "Yard Technician?" %><br/>
               </div>
               <div class="col-sm-8">
                 <%= f.check_box :handy, {class: "form-checkbox"}, 1, "0" %>
@@ -60,7 +60,7 @@
 
           <div class="form-group">
               <div class="control-label col-sm-2">
-                <%= f.label :"Medical Technician?" %><br/>
+                <%= f.label :doctor, "Medical Technician?" %><br/>
               </div>
               <div class="col-sm-8">
                 <%= f.check_box :doctor, {class: "form-checkbox"}, 1, "0" %>

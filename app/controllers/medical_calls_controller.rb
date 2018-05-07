@@ -47,21 +47,6 @@ class MedicalCallsController < ApplicationController
             params.require(:medical_call).permit(:resolved, :activity_id)
         end
 
-
-        def require_login
-          if !logged_in?
-            flash[:danger] = "Please login first to perform that action"
-            redirect_to root_path
-          end
-        end
-
-        def require_same_user
-            if current_user != @maintenance.user and current_user.admin == 0
-                flash[:danger] = "You can only edit or delete your own medical_calls"
-                redirect_to root_path
-            end
-        end
-
         def require_admin_or_role
            if !logged_in?
               flash[:danger] = "Please login first to perform that action"

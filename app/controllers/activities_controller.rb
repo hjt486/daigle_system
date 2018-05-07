@@ -62,13 +62,6 @@ class ActivitiesController < ApplicationController
           end
         end
 
-        def require_same_user
-            if current_user != @activity.user and !current_user.admin?
-                flash[:danger] = "You can only edit or delete your own activities"
-                redirect_to root_path
-            end
-        end
-
         def require_cowboy
            if logged_in? and current_user.cowboy == 0
               flash[:danger] = "Only animal technician can perform that action"

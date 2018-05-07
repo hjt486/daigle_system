@@ -13,27 +13,7 @@ class ReportsController < ApplicationController
        @reports = @activities.paginate(page: params[:page], per_page: 5)
     end
 
-    def show
-       @activities = Activity
-       @users = User
-       @pens = Pen
-       @y = params[:date_form][:year]
-       @m = params[:date_form][:month]
-       #@reports = @activities.where(["created_at LIKE ?", "%#{params[:date_form][:date]}%"]).paginate(page: params[:page], per_page: 5)
-       @reports = @activities.where("extract(year from created_at) = ? and extract(month from created_at) = ?", @y, @m).paginate(page: params[:page], per_page: 5)
-    end
-
-
-
     private
-
-
-        def require_login
-          if !logged_in?
-            flash[:danger] = "Please login first to perform that action"
-            redirect_to root_path
-          end
-        end
 
         def require_admin
            if logged_in? and !current_user.admin?
