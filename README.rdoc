@@ -1,1 +1,5 @@
-Steph Curry
+The DAIGLE System
+Daily Animal Interaction Gauge & Labor Efficiency
+
+Deployed at Heroku:
+https://daiglesystem.herokuapp.com
